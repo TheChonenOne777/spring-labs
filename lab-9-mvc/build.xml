@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="lab-9-MVC" default="deploy" basedir=".">
+	<description>
+		Spring-3 MVC Example
+    </description>
+
+	<property environment="env" />
+
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="lib" location="lib" />
+	<property name="webapps" location="${env.CATALINA_HOME}/webapps" />
+	<property name="appdir" location="${webapps}/lab-9-mvc" />
+	<property name="war-name" location="${dist}/lab-9-mvc.war" />
+
+	<path id="master-classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<javac destdir="${build}">
+			<src path="${src}" />
+			<classpath refid="master-classpath" />
+		</javac>
+
+		<copy todir="${build}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+				<include name="**/*.sql" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="dist" depends="clean, compile" description="generate the distribution">
+		<war destfile="${war-name}" webxml="src/main/web/WEB-INF/web.xml">
+			<lib dir="lib" />
+			<classes dir="build" />
+			<webinf dir="src/main/web/WEB-INF" />
+		</war>
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+
+	<target name="deploy" depends="dist" description="generate the distribution">
+		<delete dir="${appdir}" />
+		<copy todir="${webapps}">
+			<fileset file="${war-name}" />
+		</copy>
+	</target>
+
+</project>
