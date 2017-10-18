@@ -10,24 +10,35 @@ import java.util.List;
 @Repository
 public class CountryJpaDaoImpl extends AbstractJpaDao implements CountryDao {
 
-	@Override
-	public void save(Country country) {
-//		TODO: Implement it
-		EntityManager em = null;
+    @Override
+    public void save(Country country) {
+        EntityManager em = emf.createEntityManager();
 
-	}
+        em.getTransaction().begin();
+        em.persist(country);
+        em.getTransaction().commit();
 
-	@Override
-	public List<Country> getAllCountries() {
-//	TODO: Implement it
-		return null	;
-	}// getAllcountries()
+        em.close();
+    }
 
-	@Override
-	public Country getCountryByName(String name) {
-//		TODO: Implement it
+    @Override
+    public List<Country> getAllCountries() {
+        EntityManager em = emf.createEntityManager();
+        List<Country> countryList = em.createQuery("from Country", Country.class).getResultList();
+        em.close();
+        return countryList;
+    }// getAllcountries()
 
-		return null;
-	}
+    @Override
+    public Country getCountryByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        em.createQuery("from Country", Country.class).getResultList();
+
+        Country country = em.createQuery("SELECT c FROM Country c WHERE c.name LIKE :name", Country.class).setParameter("name", name)
+                .getSingleResult();
+
+        em.close();
+        return country;
+    }
 
 }
