@@ -33,7 +33,7 @@ public class JdbcTest{
 
     
     @Test
-    @DirtiesContext
+//    @DirtiesContext
     public void testCountryList() {
         List<Country> countryList = countryDao.getCountryList();
         assertNotNull(countryList);
@@ -55,7 +55,7 @@ public class JdbcTest{
     }
 
     @Test
-    @DirtiesContext
+//    @DirtiesContext
     public void testCountryChange() {
         countryDao.updateCountryName("RU", "Russia");
         assertEquals(countryWithChangedName, countryDao.getCountryByCodeName("RU"));
