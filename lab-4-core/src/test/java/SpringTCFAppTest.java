@@ -1,17 +1,16 @@
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import lab.model.Country;
 import lab.model.UsualPerson;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application-context.xml")
@@ -48,7 +47,7 @@ public class SpringTCFAppTest {
 
 		person.setCountry(country);
 
-		List<String> contacts = new ArrayList<String>();
+		List<String> contacts = new ArrayList<>();
 		contacts.add("asd@asd.ru");
 		contacts.add("+7-234-456-67-89");
 

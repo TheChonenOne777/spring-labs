@@ -2,7 +2,7 @@ package lab.model;
 
 
 public class Squishee {
-    private String name;
+    private final String name;
 
     public Squishee(String name) {
         this.name = name;

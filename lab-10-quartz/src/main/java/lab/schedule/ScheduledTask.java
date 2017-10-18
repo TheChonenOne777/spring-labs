@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduledTask {
-	
-	private static Log log = LogFactory.getLog(ScheduledTask.class);
+
+    private static final Log log = LogFactory.getLog(ScheduledTask.class);
 
 	@Scheduled(fixedDelay=5000)
 	void doSomething() {

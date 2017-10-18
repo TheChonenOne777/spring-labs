@@ -1,13 +1,8 @@
 package lab.mvc;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
 import lab.domain.User;
 import lab.mvc.form.bean.UserFormBean;
 import lab.service.UserService;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 @RequestMapping("/adduser.form")
 public class UserFormController {
-	
-	private static Log log = LogFactory.getLog(UserFormController.class);
+
+	private static final Log log = LogFactory.getLog(UserFormController.class);
 	
 	private UserService userService;
 

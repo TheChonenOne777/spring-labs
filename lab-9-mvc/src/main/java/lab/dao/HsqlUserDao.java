@@ -1,18 +1,14 @@
-/**
- * 
- */
 package lab.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
 import lab.domain.User;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author it.vaclav.kiev.ua
@@ -21,7 +17,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 public class HsqlUserDao extends JdbcDaoSupport implements UserDao {
 
-	private static Log log = LogFactory.getLog(HsqlUserDao.class); 
+	private static final Log log = LogFactory.getLog(HsqlUserDao.class);
 
 	@Override
 	public void insert(User user) {

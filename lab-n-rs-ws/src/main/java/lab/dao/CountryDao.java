@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface CountryDao {
 
-    void save(Country country);
+	void save(Country country);
 
-    List<Country> getAllCountries();
+	List<Country> getAllCountries();
 
-    Country getCountryByName(String name);
+	Country getCountryByName(String name);
 
 }

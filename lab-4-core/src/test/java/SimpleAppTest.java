@@ -1,14 +1,14 @@
-import static org.junit.Assert.*;
-
-import org.junit.*;
+import lab.model.Country;
+import lab.model.UsualPerson;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import lab.model.UsualPerson;
-import lab.model.Country;
-
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class SimpleAppTest {
 	
@@ -48,8 +48,8 @@ public class SimpleAppTest {
 
 		person.setCountry(country);
 
-		List<String> contacts = new ArrayList<String>();
-		contacts.add("asd@asd.ru");
+        List<String> contacts = new ArrayList<>();
+        contacts.add("asd@asd.ru");
 		contacts.add("+7-234-456-67-89");
 
 		person.setContacts(contacts);

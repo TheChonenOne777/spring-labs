@@ -1,18 +1,17 @@
 package foo.bar.dao;
 
+import foo.bar.bean.Employee;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import foo.bar.bean.Employee;
-
 public class EmployeeDaoImpl {
 
-	private static Map<Long, Employee> allEmployees;
+	private static final Map<Long, Employee> allEmployees;
 	static {
-		allEmployees = new HashMap<Long, Employee>();
+		allEmployees = new HashMap<>();
 		Employee e1 = new Employee(1L, "Huang Yi Ming", "huangyim@cn.ibm.com");
 		Employee e2 = new Employee(2L, "Wu Dong Fei", "wudongf@cn.ibm.com");
 		allEmployees.put(e1.getId(), e1);
@@ -28,11 +27,8 @@ public class EmployeeDaoImpl {
 	}
 
 	public List<Employee> getAll() {
-		List<Employee> employees = new ArrayList<Employee>();
-		for( Iterator<Employee> it = allEmployees.values().iterator(); it.hasNext(); ) {
-			Employee e = it.next();
-			employees.add(e);
-		}
+		List<Employee> employees = new ArrayList<>();
+		employees.addAll(allEmployees.values());
 		return employees;
 	}
 
