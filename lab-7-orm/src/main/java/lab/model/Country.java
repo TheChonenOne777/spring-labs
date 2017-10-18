@@ -2,13 +2,6 @@ package lab.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 public class Country implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -65,13 +58,7 @@ public class Country implements Serializable {
 
 		Country country = (Country) o;
 
-		if (codeName != null ? !codeName.equals(country.codeName)
-				: country.codeName != null)
-			return false;
-		if (name != null ? !name.equals(country.name) : country.name != null)
-			return false;
-
-		return true;
+		return (codeName != null ? codeName.equals(country.codeName) : country.codeName == null) && (name != null ? name.equals(country.name) : country.name == null);
 	}
 
 	public int hashCode() {

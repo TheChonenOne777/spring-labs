@@ -60,10 +60,7 @@ public class Country implements Serializable{
 
         Country country = (Country) o;
 
-        if (codeName != null ? !codeName.equals(country.codeName) : country.codeName != null) return false;
-        if (name != null ? !name.equals(country.name) : country.name != null) return false;
-
-        return true;
+        return (codeName != null ? codeName.equals(country.codeName) : country.codeName == null) && (name != null ? name.equals(country.name) : country.name == null);
     }
 
     public int hashCode() {

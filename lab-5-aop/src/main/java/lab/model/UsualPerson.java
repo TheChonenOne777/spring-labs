@@ -78,19 +78,19 @@ public class UsualPerson implements Person {
     }
 
     public String toString() {
-        String s = "Name: " + name + "\n"
+        StringBuilder s = new StringBuilder("Name: " + name + "\n"
                 + "Age: " + age + "\n"
                 + "Height: " + height + "\n"
                 + "Country: " + country + "\n"
-                + "Is Programmer?: " + isProgrammer + "\n";
+                + "Is Programmer?: " + isProgrammer + "\n");
         if ((contacts != null) && (!contacts.isEmpty())) {
-            s += "Contacts: ";
+            s.append("Contacts: ");
             for (String contact : contacts) {
-                s += contact + ", ";
+                s.append(contact).append(", ");
             }
-            s += "\n";
+            s.append("\n");
         }
-        return s;
+        return s.toString();
     }
 
     public boolean equals(Object o) {
@@ -99,13 +99,11 @@ public class UsualPerson implements Person {
 
         UsualPerson person = (UsualPerson) o;
 
-        if (age != person.age) return false;
-        if (Float.compare(person.height, height) != 0) return false;
-        if (isProgrammer != person.isProgrammer) return false;
-        if (country != null ? !country.equals(person.country) : person.country != null) return false;
-        if (name != null ? !name.equals(person.name) : person.name != null) return false;
-
-        return true;
+        return age == person.age
+                && Float.compare(person.height, height) == 0
+                && isProgrammer == person.isProgrammer
+                && (country != null ? country.equals(person.country) : person.country == null)
+                && (name != null ? name.equals(person.name) : person.name == null);
     }
 
     public int hashCode() {

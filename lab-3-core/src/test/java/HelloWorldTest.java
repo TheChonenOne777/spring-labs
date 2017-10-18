@@ -1,16 +1,17 @@
-import static org.junit.Assert.* ;
-import org.junit.*;
-
+import lab.model.Country;
+import lab.model.Person;
+import lab.model.UsualPerson;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import lab.model.UsualPerson;
-import lab.model.Person;
-import lab.model.Country;
+import static org.junit.Assert.assertEquals;
 
 public class HelloWorldTest {
 
-	protected static final String APPLICATION_CONTEXT_XML_FILE_NAME = "resources/application-context.xml";
+    private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "resources/application-context.xml";
 
 	private UsualPerson expectedPerson;
 

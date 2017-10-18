@@ -1,26 +1,25 @@
 package lab.service;
 
-import java.util.List;
-
 import lab.model.Country;
-
 import org.springframework.transaction.annotation.Propagation;
+
+import java.util.List;
 
 public interface CountryService {
 
-    public List<Country> getAllCountriesInsideTransaction(Propagation propagation);
+    List<Country> getAllCountriesInsideTransaction(Propagation propagation);
 
-    public List<Country> getAllCountriesRequired();
+    List<Country> getAllCountriesRequired();
 
-    public List<Country> getAllCountriesRequiresNew();
+    List<Country> getAllCountriesRequiresNew();
 
-    public List<Country> getAllCountriesSupports();
+    List<Country> getAllCountriesSupports();
 
-    public List<Country> getAllCountriesNever();
+    List<Country> getAllCountriesNever();
 
-    public List<Country> getAllCountriesMandatory();
+    List<Country> getAllCountriesMandatory();
 
-    public List<Country> getAllCountriesNotSupported();
+    List<Country> getAllCountriesNotSupported();
 
-    public List<Country> getAllCountries();
+    List<Country> getAllCountries();
 }
