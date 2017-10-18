@@ -11,7 +11,7 @@
 
     <bean id="customer" class="lab.model.Customer">
         <property name="name" value="Homer"/>
-        <property name="broke" value="false"/>
+        <property name="broke" value="true"/>
     </bean>
 
     <bean id="politeness" class="lab.aop.Politeness"/>
