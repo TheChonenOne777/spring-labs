@@ -2,11 +2,11 @@ package lab.model;
 
 import java.io.Serializable;
 
-public class Country implements Serializable{
+public class Country implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private int id;
+    private int id;
 
     private String name;
 
@@ -60,7 +60,8 @@ public class Country implements Serializable{
 
         Country country = (Country) o;
 
-        return (codeName != null ? codeName.equals(country.codeName) : country.codeName == null) && (name != null ? name.equals(country.name) : country.name == null);
+        if (codeName != null ? !codeName.equals(country.codeName) : country.codeName != null) return false;
+        return name != null ? name.equals(country.name) : country.name == null;
     }
 
     public int hashCode() {

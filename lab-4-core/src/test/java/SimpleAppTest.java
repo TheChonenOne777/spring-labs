@@ -11,8 +11,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class SimpleAppTest {
-	
-	protected static final String APPLICATION_CONTEXT_XML_FILE_NAME = "classpath:application-context.xml";
+
+	private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "classpath:application-context.xml";
 
 	private AbstractApplicationContext context;
 

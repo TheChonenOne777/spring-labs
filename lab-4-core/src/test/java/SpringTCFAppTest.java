@@ -48,7 +48,7 @@ public class SpringTCFAppTest {
 		person.setCountry(country);
 
 		List<String> contacts = new ArrayList<>();
-		contacts.add("asd@asd.ru");
+		contacts.add("john.smith@epam.com");
 		contacts.add("+7-234-456-67-89");
 
 		person.setContacts(contacts);
