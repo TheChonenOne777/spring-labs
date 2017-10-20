@@ -10,9 +10,9 @@ public class ScheduledTask {
 
     private static final Log log = LogFactory.getLog(ScheduledTask.class);
 
-	@Scheduled(fixedDelay=5000)
-	void doSomething() {
-		log.info("Appending log message into ScheduleLog ...");
-		ScheduleLog.append("I'm printing job...\n");
-	}
+    @Scheduled(fixedDelay = 5500)
+    void doSomething() {
+        log.info("Appending log message into ScheduleLog ...");
+        ScheduleLog.append("I'm printing job...\n");
+    }
 }

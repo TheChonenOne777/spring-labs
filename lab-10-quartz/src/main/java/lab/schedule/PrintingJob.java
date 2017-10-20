@@ -1,7 +1,7 @@
 package lab.schedule;
 
-import org.quartz.JobExecutionException;
 import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 public class PrintingJob extends QuartzJobBean {
