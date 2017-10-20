@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HelloWorldTest {
 
-    private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "resources/application-context.xml";
+    private static final String APPLICATION_CONTEXT_XML_FILE_NAME = "src/test/resources/application-context.xml";
 
 	private UsualPerson expectedPerson;
 
