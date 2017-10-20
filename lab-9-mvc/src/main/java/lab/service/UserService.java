@@ -15,26 +15,25 @@ import java.util.List;
 @Transactional
 public class UserService {
 
-	private UserDao userDao;
+    private UserDao userDao;
 
-	@Transactional(readOnly=true, propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
-	public List<User> loadAllUsers() {
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
+    public List<User> loadAllUsers() {
+        return userDao.selectAll();
+    }
 
-		return userDao.selectAll();
-	}
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
+    public void saveUser(User user) {
+        userDao.insert(user);
+    }
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
-	public void saveUser(User user) {
-		userDao.insert(user);
-	}
+    public UserDao getUserDao() {
+        return userDao;
+    }
 
-	public UserDao getUserDao() {
-		return userDao;
-	}
-
-	@Autowired
-	@Required
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
+    @Autowired
+    @Required
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 }

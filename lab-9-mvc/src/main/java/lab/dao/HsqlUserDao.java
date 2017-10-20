@@ -12,57 +12,56 @@ import java.util.List;
 
 /**
  * @author it.vaclav.kiev.ua
- * 
  */
 
 public class HsqlUserDao extends JdbcDaoSupport implements UserDao {
 
-	private static final Log log = LogFactory.getLog(HsqlUserDao.class);
+    private static final Log log = LogFactory.getLog(HsqlUserDao.class);
 
-	@Override
-	public void insert(User user) {
+    @Override
+    public void insert(User user) {
 
-		if (user != null) {
-			log.debug( "Processing user: " + user);
-			this.getJdbcTemplate().update(
-					"insert into user (firstname, lastname) values (?, ?)",
-					user.getFirstName(), user.getLastName());
+        if (user != null) {
+            log.debug("Processing user: " + user);
+            this.getJdbcTemplate().update(
+                    "INSERT INTO user (firstname, lastname) VALUES (?, ?)",
+                    user.getFirstName(), user.getLastName());
 
-		} else {
-			log.debug("Domain user is null!");
-		}
-	}
+        } else {
+            log.debug("Domain user is null!");
+        }
+    }
 
-	@Override
-	public User select(int id) {
+    @Override
+    public User select(int id) {
 
-		User user = null;
+        User user = null;
 
-		if (id > 0) {
-			user = this.getJdbcTemplate().queryForObject(
-					"select id, firstname, lastname from user where id = ?",
-					new Object[] { id }, new UserMapper());
-		}
-		log.debug("Receidved user: " + user);
-		
-		return user;
-	}
+        if (id > 0) {
+            user = this.getJdbcTemplate().queryForObject(
+                    "SELECT id, firstname, lastname FROM user WHERE id = ?",
+                    new Object[]{id}, new UserMapper());
+        }
+        log.debug("Receidved user: " + user);
 
-	@Override
-	public List<User> selectAll() {
-		return this.getJdbcTemplate().query(
-				"select id, firstname, lastname from user"
-				, new UserMapper());
-	}
+        return user;
+    }
 
-	private static final class UserMapper implements RowMapper<User> {
+    @Override
+    public List<User> selectAll() {
+        return this.getJdbcTemplate().query(
+                "SELECT id, firstname, lastname FROM user"
+                , new UserMapper());
+    }
 
-		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-			User user = new User();
-			user.setId(rs.getInt("id"));
-			user.setFirstName(rs.getString("firstname"));
-			user.setLastName(rs.getString("lastname"));
-			return user;
-		}
-	}
+    private static final class UserMapper implements RowMapper<User> {
+
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setFirstName(rs.getString("firstname"));
+            user.setLastName(rs.getString("lastname"));
+            return user;
+        }
+    }
 }
